@@ -254,7 +254,9 @@ body #page-container .et_pb_section .et_pb_button_1 {
   padding-right: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
-  background-color: #1f1f1f !important;
+  background-color: unset !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)),
+    url("../images/dark-small-chops-bg.jpg") no-repeat center center / cover;
 }
 .et_pb_row_3.et_pb_row,
 .et_pb_row_4.et_pb_row,
@@ -692,14 +694,14 @@ body
   padding-left: 24px;
 }
 .et_pb_column_5 {
-  background-image: url(../images/food-07.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   padding-top: 48px;
   padding-right: 24px;
   padding-bottom: 48px;
   padding-left: 24px;
 }
 .et_pb_column_7 {
-  background-image: url(../images/food-04.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   background-color: #ffffff;
   padding-top: 48px;
   padding-right: 24px;
@@ -707,7 +709,7 @@ body
   padding-left: 24px;
 }
 .et_pb_column_9 {
-  background-image: url(../images/food-08.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   background-color: #ffffff;
   padding-top: 48px;
   padding-right: 24px;
@@ -715,14 +717,14 @@ body
   padding-left: 24px;
 }
 .et_pb_column_11 {
-  background-image: url(../images/food-06.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   padding-top: 48px;
   padding-right: 24px;
   padding-bottom: 48px;
   padding-left: 24px;
 }
 .et_pb_column_13 {
-  background-image: url(../images/food-05.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   background-color: #ffffff;
   padding-top: 48px;
   padding-right: 24px;
@@ -730,7 +732,7 @@ body
   padding-left: 24px;
 }
 .et_pb_column_15 {
-  background-image: url(../images/food-03.jpg);
+  background-image: url(../images/placeholder-items-image.jpg);
   background-color: #ffffff;
   padding-top: 48px;
   padding-right: 24px;
