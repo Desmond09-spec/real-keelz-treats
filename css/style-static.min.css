@@ -2840,7 +2840,7 @@ img#about-image {
 #top-menu li.current-menu-item > a,
 .mobile_menu_bar:after,
 .mobile_menu_bar:before {
-  color: pink;
+  color: #da70d6;
 }
 #main-header {
   -webkit-transition: background-color 0.4s, color 0.4s,
