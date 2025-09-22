@@ -25397,7 +25397,7 @@ button.et_pb_menu__icon__with_count:after {
   opacity: 1;
   display: none;
   z-index: 9999;
-  border-top: 3px solid #2ea3f2;
+  border-top: 3px solid #da70d6;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -28689,7 +28689,7 @@ h1.et_pb_contact_main_title {
   bottom: 100%;
   top: auto;
   border-top: none;
-  border-bottom: 3px solid #2ea3f2;
+  border-bottom: 3px solid #da70d6;
   -webkit-box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
 }
