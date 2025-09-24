@@ -4276,6 +4276,17 @@
                                 <h2>Success!</h2>
                               </div>
                               <div class="et_pb_newsletter_fields">
+                                <input
+                                  type="hidden"
+                                  name="_subject"
+                                  value="Keelz Treats Newsletter – New Subscriber"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="Message"
+                                  value="A visitor just subscribed to the Keelz Treats newsletter."
+                                />
+
                                 <p
                                   class="et_pb_newsletter_field et_pb_contact_field_last et_pb_contact_field_last_tablet et_pb_contact_field_last_phone"
                                 >
@@ -5190,43 +5201,93 @@
       const aliasLast = document.getElementById("alias_lastname");
       const aliasEmail = document.getElementById("alias_email");
 
-      btn.addEventListener("click", async function (e) {
-        e.preventDefault();
-
-        // copy values
-        aliasFirst.value = first.value;
-        aliasLast.value = last.value;
-        aliasEmail.value = mail.value;
-
-        // temporarily disable originals so they aren't sent
-        first.disabled = true;
-        last.disabled = true;
-        mail.disabled = true;
-
-        // submit via fetch (AJAX) so we can re-enable afterwards
-        const fd = new FormData(form);
-        const r = await fetch(form.action, {
-          method: "POST",
-          body: fd,
-          headers: { Accept: "application/json" },
+      if (
+        !form ||
+        !btn ||
+        !first ||
+        !last ||
+        !mail ||
+        !aliasFirst ||
+        !aliasLast ||
+        !aliasEmail
+      ) {
+        console.warn("Newsletter script: missing required elements");
+      } else {
+        // Make the anchor trigger the form submit reliably.
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (typeof form.requestSubmit === "function") {
+            form.requestSubmit(); // triggers the form 'submit' event (preferred)
+          } else {
+            // fallback: dispatch submit event and call submit() if not canceled
+            const ev = new Event("submit", { cancelable: true, bubbles: true });
+            if (form.dispatchEvent(ev)) form.submit();
+          }
         });
 
-        if (r.ok) {
-          const data = await r.json().catch(() => ({}));
-          console.log("Submitted OK", data);
-          alert("Thanks for subscribing!");
-          form.reset();
-        } else {
-          const err = await r.json().catch(() => ({}));
-          console.error("Submit failed", err);
-          alert("Oops! There was a problem submitting the form.");
-        }
+        // Single submit handler — works for clicks, enter key, programmatic submits...
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-        // re-enable for future submissions
-        first.disabled = false;
-        last.disabled = false;
-        mail.disabled = false;
-      });
+          // basic validation
+          const fVal = first.value.trim();
+          const lVal = last.value.trim();
+          const mVal = mail.value.trim();
+          if (!fVal || !lVal || !mVal) {
+            alert("Please fill First name, Last name and Email.");
+            return;
+          }
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(mVal)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          // populate alias fields (clean names for Formspree)
+          aliasFirst.value = fVal;
+          aliasLast.value = lVal;
+          aliasEmail.value = mVal;
+
+          // disable originals BEFORE building FormData so they're excluded
+          first.disabled = true;
+          last.disabled = true;
+          mail.disabled = true;
+
+          // disable the button visually / accessibility
+          btn.classList.add("disabled");
+          btn.setAttribute("aria-disabled", "true");
+
+          try {
+            const fd = new FormData(form); // will include only enabled fields (aliases)
+            const r = await fetch(form.action, {
+              method: "POST",
+              body: fd,
+              headers: { Accept: "application/json" },
+            });
+
+            if (r.ok) {
+              await r.json().catch(() => ({}));
+              // success — customize as you like:
+              alert("Thanks for subscribing!");
+              form.reset();
+            } else {
+              const err = await r.json().catch(() => ({}));
+              console.error("Submit failed", err);
+              alert("Submission failed — please try again.");
+            }
+          } catch (err) {
+            console.error("Network error", err);
+            alert("Network error — please try again.");
+          } finally {
+            // re-enable for future submissions
+            first.disabled = false;
+            last.disabled = false;
+            mail.disabled = false;
+            btn.classList.remove("disabled");
+            btn.removeAttribute("aria-disabled");
+          }
+        });
+      }
     </script>
   </body>
 </html>
