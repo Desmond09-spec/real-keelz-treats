@@ -4262,7 +4262,11 @@
                           </div>
 
                           <div class="et_pb_newsletter_form">
-                            <form method="post">
+                            <form
+                              action="https://formspree.io/f/manpykjw"
+                              method="post"
+                              id="newsletter"
+                            >
                               <div
                                 class="et_pb_newsletter_result et_pb_newsletter_error"
                               ></div>
@@ -4287,6 +4291,7 @@
                                     type="text"
                                     placeholder="First Name"
                                     name="et_pb_signup_firstname"
+                                    id="et_pb_signup_firstname"
                                   />
                                 </p>
 
@@ -4305,6 +4310,7 @@
                                     type="text"
                                     placeholder="Last Name"
                                     name="et_pb_signup_lastname"
+                                    id="et_pb_signup_lastname"
                                   />
                                 </p>
 
@@ -4323,14 +4329,33 @@
                                     type="text"
                                     placeholder="Email"
                                     name="et_pb_signup_email"
+                                    id="et_pb_signup_email"
                                   />
                                 </p>
+
+                                <input
+                                  type="hidden"
+                                  name="First Name"
+                                  id="alias_firstname"
+                                />
+
+                                <input
+                                  type="hidden"
+                                  name="Last Name"
+                                  id="alias_lastname"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="Email"
+                                  id="alias_email"
+                                />
 
                                 <p class="et_pb_newsletter_button_wrap">
                                   <a
                                     class="et_pb_newsletter_button et_pb_button"
                                     href="#"
                                     data-icon=""
+                                    id="newsletter-submit"
                                   >
                                     <span class="et_subscribe_loader"></span>
                                     <span class="et_pb_newsletter_button_text"
@@ -5153,6 +5178,55 @@
           }
         }
       })();
+    </script>
+
+    <script>
+      const form = document.getElementById("newsletter");
+      const btn = document.getElementById("newsletter-submit");
+      const first = document.getElementById("et_pb_signup_firstname");
+      const last = document.getElementById("et_pb_signup_lastname");
+      const mail = document.getElementById("et_pb_signup_email");
+      const aliasFirst = document.getElementById("alias_firstname");
+      const aliasLast = document.getElementById("alias_lastname");
+      const aliasEmail = document.getElementById("alias_email");
+
+      btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        // copy values
+        aliasFirst.value = first.value;
+        aliasLast.value = last.value;
+        aliasEmail.value = mail.value;
+
+        // temporarily disable originals so they aren't sent
+        first.disabled = true;
+        last.disabled = true;
+        mail.disabled = true;
+
+        // submit via fetch (AJAX) so we can re-enable afterwards
+        const fd = new FormData(form);
+        const r = await fetch(form.action, {
+          method: "POST",
+          body: fd,
+          headers: { Accept: "application/json" },
+        });
+
+        if (r.ok) {
+          const data = await r.json().catch(() => ({}));
+          console.log("Submitted OK", data);
+          alert("Thanks for subscribing!");
+          form.reset();
+        } else {
+          const err = await r.json().catch(() => ({}));
+          console.error("Submit failed", err);
+          alert("Oops! There was a problem submitting the form.");
+        }
+
+        // re-enable for future submissions
+        first.disabled = false;
+        last.disabled = false;
+        mail.disabled = false;
+      });
     </script>
   </body>
 </html>
