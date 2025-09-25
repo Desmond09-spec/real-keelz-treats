@@ -3045,6 +3045,192 @@
         background-color: red;
       }
     </style>
+
+    <style>
+      #message-sent {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #212529;
+        border-left: 4px solid #da70d6;
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(218, 112, 214, 0.12);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+      #message-sent.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #submit_error {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #submit_error.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #submit_issue {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #submit_issue.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #fill-in-all-fields {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #fill-in-all-fields.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      /* 🔴 Error toast */
+      #enter-valid-email {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #enter-valid-email.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+    </style>
     <link
       rel="preload"
       as="style"
@@ -4446,6 +4632,18 @@
       </div>
     </div>
 
+    <div id="message-sent">Thanks for subscribing!</div>
+
+    <div id="fill-in-all-fields">
+      Please fill in all fields before submitting.
+    </div>
+
+    <div id="submit_issue">There was an issue submitting the form.</div>
+
+    <div id="submit_error">An error occurred. Please try again later.</div>
+
+    <div id="enter-valid-email">Invalid email format.</div>
+
     <script type="speculationrules">
       {
         "prefetch": [
@@ -5192,6 +5390,75 @@
     </script>
 
     <script>
+      function messageSent() {
+        const messageSentT = document.getElementById("message-sent");
+
+        messageSentT.classList.add("show");
+
+        setTimeout(() => {
+          messageSentT.classList.remove("show");
+        }, 6000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function submitIssue() {
+        const submitIssueT = document.getElementById("submit_issue");
+
+        const toast1 = document.getElementById("screenshot-toast");
+
+        toast1.classList.remove("show");
+
+        submitIssueT.classList.add("show");
+
+        setTimeout(() => {
+          submitIssueT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function submitError() {
+        const submitErrorT = document.getElementById("submit_error");
+
+        const toast1 = document.getElementById("screenshot-toast");
+
+        toast1.classList.remove("show");
+
+        submitErrorT.classList.add("show");
+
+        setTimeout(() => {
+          submitErrorT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function fillInAllFields() {
+        const fillInAllFieldsT = document.getElementById("fill-in-all-fields");
+
+        fillInAllFieldsT.classList.add("show");
+
+        setTimeout(() => {
+          fillInAllFieldsT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function enterValidEmail() {
+        const enterValidEmailAddress =
+          document.getElementById("enter-valid-email");
+
+        enterValidEmailAddress.classList.add("show");
+
+        setTimeout(() => {
+          enterValidEmailAddress.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
       const form = document.getElementById("newsletter");
       const btn = document.getElementById("newsletter-submit");
       const first = document.getElementById("et_pb_signup_firstname");
@@ -5234,12 +5501,12 @@
           const lVal = last.value.trim();
           const mVal = mail.value.trim();
           if (!fVal || !lVal || !mVal) {
-            alert("Please fill First name, Last name and Email.");
+            fillInAllFields();
             return;
           }
           const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailPattern.test(mVal)) {
-            alert("Please enter a valid email address.");
+            enterValidEmail();
             return;
           }
 
@@ -5268,7 +5535,7 @@
             if (r.ok) {
               await r.json().catch(() => ({}));
               // success — customize as you like:
-              alert("Thanks for subscribing!");
+              messageSent();
               form.reset();
             } else {
               const err = await r.json().catch(() => ({}));

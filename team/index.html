@@ -3046,6 +3046,192 @@
         padding-top: 17px;
       }
     </style>
+
+    <style>
+      #message-sent {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #212529;
+        border-left: 4px solid #da70d6;
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(218, 112, 214, 0.12);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+      #message-sent.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #submit_error {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #submit_error.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #submit_issue {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #submit_issue.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      #fill-in-all-fields {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #fill-in-all-fields.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      /* 🔴 Error toast */
+      #enter-valid-email {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        width: fit-content;
+        max-width: calc(100vw - 2rem);
+
+        background: #fff;
+        color: #dc3545; /* text color – bootstrap’s “danger” red */
+        border-left: 4px solid #dc3545; /* accent strip in red */
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+
+        /* depth + a faint red glow */
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06),
+          0 0 8px rgba(220, 53, 69, 0.15);
+
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2147483647;
+      }
+
+      #enter-valid-email.show {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+    </style>
     <link
       rel="preload"
       as="style"
@@ -3614,7 +3800,11 @@
                           </div>
 
                           <div class="et_pb_newsletter_form">
-                            <form method="post">
+                            <form
+                              action="https://formspree.io/f/manpykjw"
+                              method="post"
+                              id="newsletter"
+                            >
                               <div
                                 class="et_pb_newsletter_result et_pb_newsletter_error"
                               ></div>
@@ -3624,6 +3814,17 @@
                                 <h2>Success!</h2>
                               </div>
                               <div class="et_pb_newsletter_fields">
+                                <input
+                                  type="hidden"
+                                  name="_subject"
+                                  value="Keelz Treats Newsletter – New Subscriber"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="Message"
+                                  value="A visitor just subscribed to the Keelz Treats newsletter."
+                                />
+
                                 <p
                                   class="et_pb_newsletter_field et_pb_contact_field_last et_pb_contact_field_last_tablet et_pb_contact_field_last_phone"
                                 >
@@ -3639,6 +3840,7 @@
                                     type="text"
                                     placeholder="First Name"
                                     name="et_pb_signup_firstname"
+                                    id="et_pb_signup_firstname"
                                   />
                                 </p>
 
@@ -3657,6 +3859,7 @@
                                     type="text"
                                     placeholder="Last Name"
                                     name="et_pb_signup_lastname"
+                                    id="et_pb_signup_lastname"
                                   />
                                 </p>
 
@@ -3675,14 +3878,33 @@
                                     type="text"
                                     placeholder="Email"
                                     name="et_pb_signup_email"
+                                    id="et_pb_signup_email"
                                   />
                                 </p>
+
+                                <input
+                                  type="hidden"
+                                  name="First Name"
+                                  id="alias_firstname"
+                                />
+
+                                <input
+                                  type="hidden"
+                                  name="Last Name"
+                                  id="alias_lastname"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="Email"
+                                  id="alias_email"
+                                />
 
                                 <p class="et_pb_newsletter_button_wrap">
                                   <a
                                     class="et_pb_newsletter_button et_pb_button"
                                     href="#"
                                     data-icon=""
+                                    id="newsletter-submit"
                                   >
                                     <span class="et_subscribe_loader"></span>
                                     <span class="et_pb_newsletter_button_text"
@@ -3692,7 +3914,7 @@
                                 </p>
                               </div>
 
-                              <input
+                              <!-- <input
                                 type="hidden"
                                 value="mailchimp"
                                 name="et_pb_signup_provider"
@@ -3713,9 +3935,9 @@
                                 name="et_pb_signup_ip_address"
                               /><input
                                 type="hidden"
-                                value="b6dec3d4da8831698be6ad3da44ab983"
+                                value="0738491069f9e1d32c04f11db3b1c47a"
                                 name="et_pb_signup_checksum"
-                              />
+                              /> -->
                             </form>
                           </div>
                         </div>
@@ -3761,6 +3983,18 @@
         </footer>
       </div>
     </div>
+
+    <div id="message-sent">Thanks for subscribing!</div>
+
+    <div id="fill-in-all-fields">
+      Please fill in all fields before submitting.
+    </div>
+
+    <div id="submit_issue">There was an issue submitting the form.</div>
+
+    <div id="submit_error">An error occurred. Please try again later.</div>
+
+    <div id="enter-valid-email">Invalid email format.</div>
 
     <script type="speculationrules">
       {
@@ -4111,6 +4345,174 @@
           }
         }
       })();
+    </script>
+
+    <script>
+      function messageSent() {
+        const messageSentT = document.getElementById("message-sent");
+
+        messageSentT.classList.add("show");
+
+        setTimeout(() => {
+          messageSentT.classList.remove("show");
+        }, 6000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function submitIssue() {
+        const submitIssueT = document.getElementById("submit_issue");
+
+        const toast1 = document.getElementById("screenshot-toast");
+
+        toast1.classList.remove("show");
+
+        submitIssueT.classList.add("show");
+
+        setTimeout(() => {
+          submitIssueT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function submitError() {
+        const submitErrorT = document.getElementById("submit_error");
+
+        const toast1 = document.getElementById("screenshot-toast");
+
+        toast1.classList.remove("show");
+
+        submitErrorT.classList.add("show");
+
+        setTimeout(() => {
+          submitErrorT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function fillInAllFields() {
+        const fillInAllFieldsT = document.getElementById("fill-in-all-fields");
+
+        fillInAllFieldsT.classList.add("show");
+
+        setTimeout(() => {
+          fillInAllFieldsT.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      function enterValidEmail() {
+        const enterValidEmailAddress =
+          document.getElementById("enter-valid-email");
+
+        enterValidEmailAddress.classList.add("show");
+
+        setTimeout(() => {
+          enterValidEmailAddress.classList.remove("show");
+        }, 3000); // visible for 2.5 seconds
+      }
+    </script>
+
+    <script>
+      const form = document.getElementById("newsletter");
+      const btn = document.getElementById("newsletter-submit");
+      const first = document.getElementById("et_pb_signup_firstname");
+      const last = document.getElementById("et_pb_signup_lastname");
+      const mail = document.getElementById("et_pb_signup_email");
+      const aliasFirst = document.getElementById("alias_firstname");
+      const aliasLast = document.getElementById("alias_lastname");
+      const aliasEmail = document.getElementById("alias_email");
+
+      if (
+        !form ||
+        !btn ||
+        !first ||
+        !last ||
+        !mail ||
+        !aliasFirst ||
+        !aliasLast ||
+        !aliasEmail
+      ) {
+        console.warn("Newsletter script: missing required elements");
+      } else {
+        // Make the anchor trigger the form submit reliably.
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (typeof form.requestSubmit === "function") {
+            form.requestSubmit(); // triggers the form 'submit' event (preferred)
+          } else {
+            // fallback: dispatch submit event and call submit() if not canceled
+            const ev = new Event("submit", { cancelable: true, bubbles: true });
+            if (form.dispatchEvent(ev)) form.submit();
+          }
+        });
+
+        // Single submit handler — works for clicks, enter key, programmatic submits...
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // basic validation
+          const fVal = first.value.trim();
+          const lVal = last.value.trim();
+          const mVal = mail.value.trim();
+          if (!fVal || !lVal || !mVal) {
+            fillInAllFields();
+            return;
+          }
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(mVal)) {
+            enterValidEmail();
+            return;
+          }
+
+          // populate alias fields (clean names for Formspree)
+          aliasFirst.value = fVal;
+          aliasLast.value = lVal;
+          aliasEmail.value = mVal;
+
+          // disable originals BEFORE building FormData so they're excluded
+          first.disabled = true;
+          last.disabled = true;
+          mail.disabled = true;
+
+          // disable the button visually / accessibility
+          btn.classList.add("disabled");
+          btn.setAttribute("aria-disabled", "true");
+
+          try {
+            const fd = new FormData(form); // will include only enabled fields (aliases)
+            const r = await fetch(form.action, {
+              method: "POST",
+              body: fd,
+              headers: { Accept: "application/json" },
+            });
+
+            if (r.ok) {
+              await r.json().catch(() => ({}));
+              // success — customize as you like:
+              messageSent();
+              form.reset();
+            } else {
+              const err = await r.json().catch(() => ({}));
+              console.error("Submit failed", err);
+              alert("Submission failed — please try again.");
+            }
+          } catch (err) {
+            console.error("Network error", err);
+            alert("Network error — please try again.");
+          } finally {
+            // re-enable for future submissions
+            first.disabled = false;
+            last.disabled = false;
+            mail.disabled = false;
+            btn.classList.remove("disabled");
+            btn.removeAttribute("aria-disabled");
+          }
+        });
+      }
     </script>
   </body>
 </html>
